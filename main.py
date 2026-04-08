@@ -61,7 +61,7 @@ if __name__ == "__main__":
     # Operations commands
     commands = {
         "SAVE_TO_FILE": True,  # Saving results to file or present them over CMD
-        "CREATE_DATA": False,  # Creating new dataset
+        "CREATE_DATA": True,  # Creating new dataset
         "LOAD_DATA": True,  # Loading data from exist dataset
         "LOAD_MODEL": True,  # Load specific model for training
         "TRAIN_MODEL": True,  # Applying training operation
