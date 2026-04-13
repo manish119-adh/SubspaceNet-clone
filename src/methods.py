@@ -167,7 +167,7 @@ class SubspaceMethod(object):
             subspacenet_model.eval()
             covariance_mat = subspacenet_model(X)[-1]
             # Convert to np.array type
-            covariance_mat = np.array(covariance_mat.squeeze())
+            covariance_mat = np.array(covariance_mat.squeeze().detach().cpu())
             return covariance_mat
 
         if mode.startswith("spatial_smoothing"):

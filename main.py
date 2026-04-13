@@ -34,6 +34,7 @@ from src.evaluation import evaluate
 from src.plotting import initialize_figures
 from pathlib import Path
 from src.models import ModelGenerator
+import argparse
 
 # Initialization
 warnings.simplefilter("ignore")
@@ -42,6 +43,13 @@ plt.close("all")
 
 if __name__ == "__main__":
     # Initialize paths
+    parser = argparse.ArgumentParser(
+                    prog='Subspace-Net',
+                    description='Subspace net main script for training and evaluating the proposed algorithms',
+                    epilog='For more details, please refer to the README file')
+    parser.add_argument('--data_path',type=str, action='store_true', help='Data path to either save or load from')
+    parser.add_argument('--model_path', type=str, help='Path to load or save model weights')
+    
     external_data_path = Path.cwd() / "data"
     scenario_data_path = "uniform_bias_spacing"
     datasets_path = external_data_path / "datasets" / scenario_data_path
@@ -63,11 +71,13 @@ if __name__ == "__main__":
         "SAVE_TO_FILE": True,  # Saving results to file or present them over CMD
         "CREATE_DATA": True,  # Creating new dataset
         "LOAD_DATA": True,  # Loading data from exist dataset
-        "LOAD_MODEL": True,  # Load specific model for training
+        "LOAD_MODEL": False,  # Load specific model for training
         "TRAIN_MODEL": True,  # Applying training operation
         "SAVE_MODEL": False,  # Saving tuned model
         "EVALUATE_MODE": True,  # Evaluating desired algorithms
     }
+    for command in commands:
+
     # Saving simulation scores to external file
     if commands["SAVE_TO_FILE"]:
         file_path = (
@@ -96,7 +106,7 @@ if __name__ == "__main__":
         .set_model(system_model_params)
     )
     # Define samples size
-    samples_size = 100000  # Overall dateset size
+    samples_size = 100  # Overall dateset size
     train_test_ratio = 0.05  # training and testing datasets ratio
     # Sets simulation filename
     simulation_filename = get_simulation_filename(
