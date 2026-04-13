@@ -49,7 +49,7 @@ if __name__ == "__main__":
                     epilog='For more details, please refer to the README file')
     parser.add_argument('--data_path',type=str, action='store_true', help='Data path to either save or load from')
     parser.add_argument('--model_path', type=str, help='Path to load or save model weights')
-    
+
     external_data_path = Path.cwd() / "data"
     scenario_data_path = "uniform_bias_spacing"
     datasets_path = external_data_path / "datasets" / scenario_data_path
@@ -70,13 +70,13 @@ if __name__ == "__main__":
     commands = {
         "SAVE_TO_FILE": True,  # Saving results to file or present them over CMD
         "CREATE_DATA": True,  # Creating new dataset
-        "LOAD_DATA": True,  # Loading data from exist dataset
+        "LOAD_DATA": False,  # Loading data from exist dataset
         "LOAD_MODEL": False,  # Load specific model for training
         "TRAIN_MODEL": True,  # Applying training operation
         "SAVE_MODEL": False,  # Saving tuned model
         "EVALUATE_MODE": True,  # Evaluating desired algorithms
     }
-    for command in commands:
+    
 
     # Saving simulation scores to external file
     if commands["SAVE_TO_FILE"]:
