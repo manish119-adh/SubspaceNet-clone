@@ -229,7 +229,7 @@ def MSPE(doa_predictions: np.ndarray, doa: np.ndarray):
     rmspe_list = []
     for p in list(permutations(doa_predictions, len(doa_predictions))):
         p = np.array(p)
-        doa = np.array(doa)
+        doa = np.array(doa.detach().cpu())
         # Calculate error with modulo pi
         error = (((p - doa) * np.pi / 180) + np.pi / 2) % np.pi - np.pi / 2
         # Calculate MSE over all permutations

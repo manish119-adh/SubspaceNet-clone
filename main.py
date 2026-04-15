@@ -47,7 +47,9 @@ if __name__ == "__main__":
                     prog='Subspace-Net',
                     description='Subspace net main script for training and evaluating the proposed algorithms',
                     epilog='For more details, please refer to the README file')
-    parser.add_argument('--data_path', type=str, help='Data path to either save or load from')
+    parser.add_argument('--train_data_path', type=str, help='Train path to either save or load from')
+    parser.add_argument('--test_data_path', type=str, help='Test path to either save or load from')
+    
     parser.add_argument('--model_path', type=str, help='Path to load or save model weights')
 
     external_data_path = Path.cwd() / "data"
